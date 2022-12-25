@@ -6,9 +6,6 @@
 
 As we watch the baseball game or table tennis game, we can see the spinning ball moving with a tricky trajectory. That is because the Magnus effect gives an additional force to the ball. As a result, the ball drops rapidly.
 
-.. image:: img/Magnus_effect_50.png 
-.. image:: img/FBD_50.png
-
 After evaluating the free body diagram of a spinning ball, there are three external force exerting on the ball, which are gravity, drag and force from the Magnus effect. And we can get the following equations
 
 
@@ -31,8 +28,22 @@ where
 
 To solve this problem, **Runge–Kutta method** is used to calculate the state of variables.
 
+## Installation
+Download the Spinball project through git.
+`git clone https://github.com/zurzeit/SpinBall.git`
 
+Create conda environment with name "spinball" and activate it.
+`conda create -n spinball python=3.9`
+`conda activate spinball`
 
+Install requirements with the following command:
+`make setup`
+
+## Build the project
+Use makefile to build the spinball package.
+`make all`
+
+Now, we are ready to use the Spinball functions!
 ## API Description
 
 1. `import _spinball` 
@@ -65,8 +76,23 @@ To solve this problem, **Runge–Kutta method** is used to calculate the state o
     * Return a integer, it means the index of frame which the states finish the calculation. The initial states is defined with index 0.
 14. `spinball_obj.Final_timestamp`
     * Return a integer, it means the index of the end frame. The initial states is defined with index 0.
+## Visualization
+This section is about the visualization part. In the file "viz_example.py" showcases some of the examples.
+
+ ![](https://github.com/zurzeit/SpinBall/blob/master/img/still_simulation.png)
+
+ ![](https://github.com/zurzeit/SpinBall/blob/master/img/ball_simulation.gif)
+
+Let's try to run a simulation!
+`make viz`
+
+#### Function explaination
+1. `viz = viz_tool.viz_tool_baseball(spinball_obj,list_of_states_dict)`: Create the instance to prepare for the simulation.
+2. `viz.viz_video()`: Play the simulation video.
+3. `viz.viz_static()`: Show the final state of the simulation.
+
 ## References
 
-[1] Magnus effect Wiki: https://en.wikipedia.org/wiki/Magnus_effect
-[2] Table Tennis and Physics: https://www.intechopen.com/online-first/83844
-[3] Chapter 6 - Rotating Cylinders, Annuli, and Spheres https://www.sciencedirect.com/science/article/pii/B9780123820983000068
+1. Magnus effect Wiki: https://en.wikipedia.org/wiki/Magnus_effect
+2. Table Tennis and Physics: https://www.intechopen.com/online-first/83844
+3. Chapter 6 - Rotating Cylinders, Annuli, and Spheres https://www.sciencedirect.com/science/article/pii/B9780123820983000068
