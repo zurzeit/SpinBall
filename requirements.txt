@@ -1,0 +1,3 @@
+pybind11
+pytest
+open3d

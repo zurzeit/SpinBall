@@ -7,36 +7,25 @@ import _spinball
 import time
 import copy
 import math
-# import random
-import sys
+
 import os
-# Animation callback function. it needs to contain as a minimum the visualizer reference
 class viz_tool_baseball():
     def __init__(self, spinball_cls,list_of_ballstates_dict) -> None:
         self.spinball_cls = spinball_cls
-        # self.states_data = np.array(spinball_cls.states)
+
         self.list_of_ball_dict = self.get_initial_and_translate2(list_of_ballstates_dict)
         self.num_of_demo_balls = len(list_of_ballstates_dict)
         self.color_list = [[i//4, (i%4)//2, (i%2)//1] for i in range(1,8)]
         
         self.target_distance = spinball_cls.Max_x_distance
-        # print(self.list_of_ball_dict)
-        # print(math.isinf(self.target_distance))
+
         
-    def get_initial_and_translate(self):
-        
-        positions = self.states_data[:,[0,2,4]]
-        init_position = positions[0,:]
-        translate = positions[1:,:] - positions[:-1,:]
-        # print(translate)
-        return init_position, translate
     def get_initial_and_translate2(self, list_of_balldict):
         
         ret_list = []
         self.num_translate = 0
         for index, ball_dict in enumerate(list_of_balldict):
-            print("ball_dict['States']")
-            print(ball_dict)
+
             positions = ball_dict['States'][:,[0,2,4]]
             init_position = positions[0,:]
             translate = positions[1:,:] - positions[:-1,:]
@@ -67,11 +56,6 @@ class viz_tool_baseball():
         
         
         if not math.isinf(self.target_distance):
-            w_strike = 0.1
-            h_strike = 1
-            d_strike = 1
-            # mesh_strikezone = o3d.geometry.TriangleMesh.create_box(w_strike,h_strike,d_strike)
-            # mesh_strikezone.translate((self.spinball_cls.Max_x_distance,self.initial[1]- 0.5*h_strike,self.initial[2] - 0.5*d_strike))
             for i in range(5):
                 if i%2 == 0:
                     coloring = [1,0,0]
@@ -84,7 +68,7 @@ class viz_tool_baseball():
                 mesh_target.rotate(Rotate_mat, center=(0, 0, 0))
                 mesh_target.translate((self.spinball_cls.Max_x_distance + i*0.01,self.initial[1], self.initial[2]+ 0.5*thick))
                 static_obj_list.append(mesh_target)
-            # static_obj_list.append(mesh_strikezone)
+
                 
 
         dynamic_obj_list = []
@@ -118,9 +102,7 @@ class viz_tool_baseball():
         static_obj_list.append(mesh_floor)
         
         if not math.isinf(self.target_distance):
-            w_strike = 0.1
-            h_strike = 1
-            d_strike = 1
+
             for i in range(5):
                 if i%2 == 0:
                     coloring = [1,0,0]
@@ -134,13 +116,6 @@ class viz_tool_baseball():
                 mesh_target.translate((self.spinball_cls.Max_x_distance + i*0.01,self.initial[1], self.initial[2]+ 0.5*thick))
                 static_obj_list.append(mesh_target)
 
-            # mesh_strikezone = o3d.geometry.TriangleMesh.create_box(w_strike,h_strike,d_strike)
-            # mesh_strikezone.translate((self.spinball_cls.Max_x_distance,self.initial[1]-0.5*h_strike,self.initial[2]-0.5*d_strike))
-            # mesh_center = o3d.geometry.TriangleMesh.create_sphere(radius=self.spinball_cls.R)
-            # mesh_center.translate((self.spinball_cls.Max_x_distance,self.initial[1]-0.5*h_strike,self.initial[2]-0.5*d_strike))
-            # static_obj_list.append(mesh_strikezone)
-            # static_obj_list.append(mesh_center)    
-        
         vis = o3d.visualization.Visualizer()
         vis.create_window(window_name='Angel Visualize', width=1600, height=1200)
         
@@ -169,7 +144,7 @@ class viz_tool_baseball():
         for i in range(self.num_translate):
             if i == 0:
                 time.sleep(1)
-            time.sleep(0.05)
+            time.sleep(0.1)
             camera_translate = []
             remove_index_list = []
 
