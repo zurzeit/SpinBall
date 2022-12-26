@@ -153,16 +153,7 @@ public:
     }
     std::vector<std::vector<double>> RK4_main(double total_sec, double time_inc, std::vector<double> & init_state, std::vector<double> & omega)
     {
-        for(size_t i = 0; i < 80; i ++)
-        //     std::cout << "=";
-        // std::cout << "\n";
-        // std::cout << "RK4_main:"<< std::endl;
-        // std::cout << "  total_sec:"<< total_sec << std::endl;
-        // std::cout << "  time_inc:" << time_inc << std::endl;
-        // std::cout << "  init states:[";
-        // for(double i : init_state)
-        //     std::cout << i << " ";
-        // std::cout << "]\n";
+        // for(size_t i = 0; i < 80; i ++)
 
         states_reset(total_sec, time_inc, init_state);
         std::vector<double> input_state, ret_state;
@@ -179,8 +170,9 @@ public:
             // print_states();
         }
         if(Done_timestamp != Final_timestamp){
-            m_buffer.resize(Done_timestamp);
             Total_timestamp = Done_timestamp + 1;
+            m_buffer.resize(Total_timestamp);
+            
         }
         return m_buffer;
     }
