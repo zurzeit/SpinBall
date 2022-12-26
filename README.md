@@ -12,7 +12,9 @@ After evaluating the free body diagram of a spinning ball, there are three exter
 
 
 $$\ddot{x}=\dfrac{F_{D_x}}{m}+\dfrac{F_{L_x}}{m}$$
+
 $$\ddot{y}=\dfrac{F_{D_y}}{m}+\dfrac{F_{L_y}}{m}$$
+
 $$\ddot{z}=\dfrac{F_{D_z}}{m}+\dfrac{F_{L_z}}{m}-g$$
 
 
@@ -30,13 +32,18 @@ To solve this problem, **Runge–Kutta method** is used to calculate the state o
 
 ## Installation
 Download the Spinball project through git.
+
 `git clone https://github.com/zurzeit/SpinBall.git`
 
 Create conda environment with name "spinball" and activate it.
-`conda create -n spinball python=3.9`
-`conda activate spinball`
+
+```
+conda create -n spinball python=3.9
+conda activate spinball
+```
 
 Install requirements with the following command:
+
 `make setup`
 
 ## Build the project
@@ -84,6 +91,7 @@ This section is about the visualization part. In the file "viz_example.py" showc
  ![](https://github.com/zurzeit/SpinBall/blob/master/img/ball_simulation.gif)
 
 Let's try to run a simulation!
+
 `make viz`
 
 #### Function explaination
