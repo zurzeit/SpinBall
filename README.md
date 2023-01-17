@@ -31,24 +31,25 @@ where
 To solve this problem, **Runge–Kutta method** is used to calculate the state of variables.
 
 ## Installation
-Download the Spinball project through git.
+1. Download the Spinball project through git.
 
-`git clone https://github.com/zurzeit/SpinBall.git`
+   ``git clone https://github.com/zurzeit/SpinBall.git``
 
-Create conda environment with name "spinball" and activate it.
+2. Create conda environment with name "spinball" and activate it.
 
-```
-conda create -n spinball python=3.9
-conda activate spinball
-```
+   ```
+   conda create -n spinball python=3.9
+   conda activate spinball
+   ```
 
-Install requirements with the following command:
+3. Install requirements with the following command:
 
-`make setup`
+   ``make setup``
 
 ## Build the project
 Use makefile to build the spinball package.
-`make all`
+
+   ``make all``
 
 Now, we are ready to use the Spinball functions!
 ## API Description
